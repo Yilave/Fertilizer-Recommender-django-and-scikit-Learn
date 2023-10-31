@@ -1,0 +1,41 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="htmx-config" content='{"historyCacheSize": 0, "refreshOnHistoryMiss": true}'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+
+    <title>{% block title %} {% endblock %}</title>
+
+</head>
+
+<body hx-boost="true">
+    {% include 'nav.html' %}
+
+
+
+    {% block content %}
+
+    {% endblock %}
+
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{% static 'htmx.mini.js' %}" defer></script>
+    <script src="{% static 'utils.js' %}" defer></script>
+    <script src="path/to/chartjs/dist/chart.umd.js" defer></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/restored.js" defer></script>
+</body>
+
+</html>

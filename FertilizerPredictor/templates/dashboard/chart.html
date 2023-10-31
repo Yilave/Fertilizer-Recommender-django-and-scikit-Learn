@@ -1,0 +1,70 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{chart.form}}
+    <input type="submit" value="change">
+
+</form>
+
+<div class="col-lg-8 m-auto">
+
+    <canvas id="myChart"></canvas>
+
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+
+    // After swap
+    document.addEventListener('htmx:afterSwap', () => {
+        const ctx = document.getElementById('myChart')
+
+        new Chart(ctx, {
+            type: '{{chart.obj.chart_type.lower}}',
+            data: {
+                labels: {{ chart.labels | safe }},
+        datasets: [{
+            label: {{ chart.obj.predictions | safe }},
+        data: {{ chart.data | safe }},
+        borderWidth: 1
+                }]
+            },
+        options: {
+
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+            });
+    
+            
+        })
+
+    const ctx = document.getElementById('myChart')
+
+    new Chart(ctx, {
+        type: '{{chart.obj.chart_type.lower}}',
+        data: {
+            labels: {{ chart.labels | safe }},
+        datasets: [{
+            label: {{ chart.obj.predictions | safe }},
+        data: {{ chart.data | safe }},
+        borderWidth: 1
+                }]
+            },
+        options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+        });
+</script>
+{% endblock scripts %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <title>{% block title %} {% endblock %}</title>
+
+</head>
+
+
+{% block content %}
+{% include 'nav.html' %}
+{% include 'partials/messaging.html' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 m-auto">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1 style="text-align: center;">Login Below</h1>
+                    <form method="POST" autocomplete="off">
+                        {% csrf_token %}
+
+                        <div class="row">
+
+
+                            <input type="text" class="form-control" id="email" placeholder="Enter Username"
+                                name="username" required>
+                            <br><br>
+                            <input type="password" class="form-control" placeholder="Enter Password" name="password"
+                                required>
+                            <br><br>
+                            <input type="submit" value="Submit" class="btn btn-info">
+
+                        </div>
+                    </form>
+                    <div class="alert alert-success" style="margin-top:10px;">
+                        <p><strong style="font-size: 20px;">Not yet registered? <a class="btn btn-info"
+                                    href="{% url 'register' %}">Click Here</a></strong></p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% include 'partials/footer.html' %}
+
+{% endblock %}

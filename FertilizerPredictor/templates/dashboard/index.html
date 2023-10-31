@@ -1,0 +1,58 @@
+{% extends 'partials/base.html' %}
+{% block title %}Home{% endblock %}
+{% load static %}
+{% block content %}
+
+
+
+{% include 'partials/messaging.html' %}
+
+{% if user.is_authenticated %}
+</div>
+<div class="container">
+    <div class="row" align="center">
+        <div class="col-md-8 m-auto">
+            <div class="card shadow">
+                <div class="card-body">
+
+
+                    <p style="text-align:center;"><strong>Username:</strong> {{user.username}}</p>
+                    <p style="text-align:center;"><strong>E-Mail:</strong> {{user.email}}</p>
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endif %}
+<div class="jumbotron jumbotron-fluid" style="margin-top:20px;">
+    <div class="container">
+
+
+        <div class="alert-info">
+            <strong>
+                <p style="margin-top:5px;">Please kindly click on <a class="btn btn-info"
+                        href="{% url 'analysis' %}">Analysis</a> to submit soil test values
+                    and get the recommended fertilizer</p>
+            </strong>
+        </div>
+
+    </div>
+</div>
+
+
+
+{% include 'partials/footer.html' %}
+
+{% endblock %}

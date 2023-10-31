@@ -1,0 +1,42 @@
+{% extends 'partials/base.html' %}
+{% block title %}Recommendations{% endblock %}
+
+{% block content %}
+
+{% include 'partials/messaging.html' %}
+
+
+<div class="container shadow">
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered">
+      <thead class="bg-dark">
+        <tr>
+          <th>Nitrogen</th>
+          <th>Phosphorus</th>
+          <th>Potassium</th>
+          <th>Recommendations</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in predicted_fertilizer %}
+        <tr>
+          {% comment %} <td>{{ data.user.username}}</td> {% endcomment %}
+          <td>{{ data.Nitrogen }}</td>
+          <td>{{ data.Phosphorus }}</td>
+          <td>{{ data.Potassium }}</td>
+          <td>{{ data.predictions }}</td>
+          <td><a href="{% url 'chart' pk=data.pk %}" class="btn btn-primary">Chart</a> <a class="btn btn-danger"
+              href="{% url 'delete' pk=data.pk %}"><i class="fas fa-times"></i></a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+
+
+</div>
+
+{% include 'partials/footer.html' %}
+{% endblock %}

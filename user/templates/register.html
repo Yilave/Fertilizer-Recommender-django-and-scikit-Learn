@@ -1,0 +1,85 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <title>{% block title %} {% endblock %}</title>
+
+</head>
+
+
+{% block content %}
+
+{% include 'partials/nav.html' %}
+{% include 'partials/messaging.html' %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 m-auto">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1 style="text-align: center;">Register Below</h1>
+                    <form method="POST" autocomplete="" action="{% url 'register' %}">
+
+
+                        {% csrf_token %}
+
+
+
+                        <div class="form-input">
+                            <input type="text" class="form-control" placeholder="Enter Username" name="username"
+                                required hx-post="{% url 'check-username' %}" hx-swap="outerHtml" hx-trigger="keyup"
+                                hx-target="#username-error">
+                            <div class="form-alert" id="username-error"></div>
+                        </div>
+                        <div class="form-input">
+                            <input type="email" class="form-control" placeholder="Enter Email Address" name="email"
+                                required hx-post="{% url 'check-email' %}" hx-swap="outerHtml" hx-trigger="keyup"
+                                hx-target="#email-error">
+                            <div class="form-alert" id="email-error"></div>
+                        </div>
+                        <div class="form-input">
+                            <input type="password" class="form-control" placeholder="Enter Password" name="password1"
+                                required>
+                        </div>
+                        <div class="form-input">
+                            <input type="password" class="form-control" placeholder="Confirm Password" name="password2"
+                                required hx-post="{% url 'check-password' %}" hx-swap="outerHtml" hx-trigger="keyup"
+                                hx-target="#password-error">
+                            <div class="form-alert" id="password-error"></div>
+                        </div>
+                        <div class="form-input">
+                            <input type="submit" value="Submit" class=" btn btn-block btn-info" align="center">
+                        </div>
+                </div>
+                </form>
+                <div class="alert alert-success" style="margin-top:10px;">
+                    <p><strong style="font-size: 20px;">Already registered? <a class="btn btn-info"
+                                href="{% url 'login' %}">Login Here</a></strong></p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+
+{% include 'partials/footer.html' %}
+
+{% endblock %}

@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.form-alert {
+    display: flex;
+}
+
+.failure-icon {
+    color: red;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.success-icon {
+    color: green;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+#logo {
+    display: flex;
+}
+
+.logo-first-word {
+    color: green;
+}
+
+.logo-span {
+    color: rgb(66, 49, 34);
+}
+
+.collapse,
+.navbar-nav {
+    transition: 0.5s ease-in-out;
+}
+
+.btns {
+    display: flex;
+    gap: .5rem;
+}
+
+@media screen and (min-width:768px) {
+    .hide-bg {
+        display: none;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .hide-sm {
+        display: none;
+    }
+}
+
+.form-input {
+    margin-bottom: .5rem;
+}

@@ -1,0 +1,49 @@
+{% extends 'partials/base.html' %}
+{% block title %}Soil Analysis{% endblock %}
+
+{% block content %}
+
+{% include 'partials/messaging.html' %}
+
+<div class="container" align="center" style="margin-top: 50px;">
+    <div class="row mt-4">
+        <div class="col-lg-8 mt-5" style="margin: auto;">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="POST" autocomplete="off">
+                        {% csrf_token %}
+
+                        <div class="row">
+                            <div class="form-input">
+                                <input type="number" class="form-control" id="email" placeholder="Enter Nitrogen Value"
+                                    name="Nitrogen" required>
+                            </div>
+                            <div class="form-input">
+                                <input type="number" class="form-control" placeholder="Enter Phosphorus Value"
+                                    name="Phosphorus" required>
+                            </div>
+                            <div class="form-input">
+                                <input type="number" class="form-control" placeholder="Enter Potassium Value"
+                                    name="Potassium" required>
+                            </div>
+                            <div class="form-input">
+                                <input type="submit" value="Get Recommendations" class="btn btn-block btn-info"
+                                    align="center">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% include 'partials/footer.html' %}
+
+{% endblock %}

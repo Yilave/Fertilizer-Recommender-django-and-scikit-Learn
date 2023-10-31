@@ -1,0 +1,54 @@
+<canvas id="myChart"></canvas>
+
+{% block scripts %}
+<script id="update-context">
+
+    // After swap
+    document.addEventListener('htmx:afterSwap', () => {
+        const ctx = document.getElementById('myChart')
+
+        new Chart(ctx, {
+            type: '{{chart.obj.chart_type.lower}}',
+            data: {
+                labels: {{ chart.labels | safe }},
+        datasets: [{
+            label: {{ chart.obj.predictions | safe }},
+        data: {{ chart.data | safe }},
+        borderWidth: 1
+            }]
+        },
+        options: {
+
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+        });
+
+        
+    })
+
+    const ctx = document.getElementById('myChart')
+
+    new Chart(ctx, {
+        type: '{{chart.obj.chart_type.lower}}',
+        data: {
+            labels: {{ chart.labels | safe }},
+        datasets: [{
+            label: {{ chart.obj.predictions | safe }},
+        data: {{ chart.data | safe }},
+        borderWidth: 1
+            }]
+        },
+        options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+    });
+</script>
+{% endblock scripts %}

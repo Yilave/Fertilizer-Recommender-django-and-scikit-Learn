@@ -26,8 +26,11 @@
           <td>{{ data.Phosphorus }}</td>
           <td>{{ data.Potassium }}</td>
           <td>{{ data.predictions }}</td>
-          <td><a href="{% url 'chart' pk=data.pk %}" class="btn btn-primary" hx-boost="false">Chart</a> <a
-              class="btn btn-danger" href="{% url 'delete' pk=data.pk %}"><i class="fas fa-times"></i></a></td>
+          <td>
+            <div class="btns"><a href="{% url 'chart' pk=data.pk %}" class="btn btn-primary" hx-boost="false">Chart</a>
+              <a class="btn btn-danger" href="{% url 'delete' pk=data.pk %}"><i class="fas fa-times"></i></a>
+            </div>
+          </td>
         </tr>
         {% endfor %}
       </tbody>

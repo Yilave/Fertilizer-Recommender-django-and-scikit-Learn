@@ -1,7 +1,6 @@
 document.addEventListener('htmx:afterSwap', () => {
     const navBartoggle = document.querySelector('.navbar-toggler')
     const collapse = document.querySelector('.collapse')
-    console.log(navBartoggle, collapse);
 
     navBartoggle.addEventListener('click', () => {
         console.log('clicked');
@@ -19,12 +18,9 @@ document.addEventListener('htmx:afterSwap', () => {
 // AFTER HTMX SWAP
 const navBartoggle = document.querySelector('.navbar-toggler')
 const collapse = document.querySelector('.collapse')
-console.log(navBartoggle, collapse);
 
 navBartoggle.addEventListener('click', () => {
-    console.log('clicked');
     collapse.classList.contains('show') ? collapse.classList.remove('show') : collapse.classList.add('show')
-    // collapse.classList.toggle('show')
 
 })
 

@@ -11,9 +11,9 @@ from profiles.models import Profile
 
 class Data(models.Model):
 
-    BAR = 'Bar'
-    LINE = 'Line'
-    PIE = 'Pie'
+    BAR = 'bar'
+    LINE = 'line'
+    PIE = 'pie'
 
     CHART_CHOICES = (
         (BAR, 'bar'),

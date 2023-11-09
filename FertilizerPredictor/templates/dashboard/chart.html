@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<form method="POST">
+<form method="POST" id="chart-type-form">
     {% csrf_token %}
     {{chart.form}}
     <input type="submit" value="change">
@@ -17,54 +17,6 @@
 {% endblock content %}
 
 {% block scripts %}
-<script>
+<script src="{% static 'chart.js' %}" defer></script>
 
-    // After swap
-    document.addEventListener('htmx:afterSwap', () => {
-        const ctx = document.getElementById('myChart')
-
-        new Chart(ctx, {
-            type: '{{chart.obj.chart_type.lower}}',
-            data: {
-                labels: {{ chart.labels | safe }},
-        datasets: [{
-            label: {{ chart.obj.predictions | safe }},
-        data: {{ chart.data | safe }},
-        borderWidth: 1
-                }]
-            },
-        options: {
-
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-            });
-    
-            
-        })
-
-    const ctx = document.getElementById('myChart')
-
-    new Chart(ctx, {
-        type: '{{chart.obj.chart_type.lower}}',
-        data: {
-            labels: {{ chart.labels | safe }},
-        datasets: [{
-            label: {{ chart.obj.predictions | safe }},
-        data: {{ chart.data | safe }},
-        borderWidth: 1
-                }]
-            },
-        options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-        });
-</script>
 {% endblock scripts %}

@@ -4,7 +4,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('analysis/', views.analysis, name='analysis'),
     path('predictions/', views.predictions, name='predictions'),
-    path('chart/<pk>/', views.object_chart, name='chart'),
+    path('<pk>/', views.object_chart, name='chart'),
+     path('<pk>/chart/', views.object_chart_js, name='js-chart'),
     path('delete/<pk>/', views.delete, name='delete'),
 
 ]

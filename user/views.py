@@ -104,9 +104,10 @@ def check_username(request):
         if User.objects.filter(username=username).exists():
             return HttpResponse(f'<div style="color: red;">Username {username} already exists</div> <i class="fas fa-exclamation-circle failure-icon"></i>')
         else:
-            return HttpResponse('<div style="color: green;">Username available</div> <i class="fas fa-check-circle success-icon"></i>')
+            return HttpResponse()
     except:
-        return HttpResponse()
+        pass
+      
     
     
     
@@ -126,8 +127,15 @@ def check_email(request):
 def check_password(request):
     password1 = request.POST['password1']
     password2 = request.POST['password2']
+
     if not password1 == password2:
         return HttpResponse('<div style="color: red;">Passwords don\'t match</div> <i class="fas fa-exclamation-circle failure-icon"></i>')
-    else: 
+    elif password1 and password2 == '':
         return HttpResponse()
+    else: return HttpResponse()
+
+
+
+    
+    
 

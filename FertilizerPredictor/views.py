@@ -17,11 +17,11 @@ def home(request):
 @login_required
 def analysis(request):
     if request.method == 'POST':
-        profile = Profile.objects.get(user=request.user) 
+        profile = Profile.objects.get(user=request.user)
         form = DataForm(request.POST or None)
         if form.is_valid():
             instance = form.save(commit=False)
-            print(instance)
+            # print(instance)
             instance.user = profile
             instance.save()
             return redirect('predictions')
@@ -30,6 +30,7 @@ def analysis(request):
         'form': form,
     }
     return render(request, 'dashboard/analysis.html', context)
+
 
 @login_required
 def predictions(request):
@@ -45,13 +46,14 @@ def object_chart(request, pk):
     obj = Data.objects.get(pk=pk)
     redirect_url = '.'
     labels = ['Nitrogen', 'Phosphorus', 'Potassium']
-    data = [f'{obj.Nitrogen}', f'{obj.Phosphorus}', f'{obj.Potassium}', f'{obj.predictions}']
-   
+    data = [f'{obj.Nitrogen}', f'{obj.Phosphorus}',
+            f'{obj.Potassium}', f'{obj.predictions}']
+
     form = ChartChoiceForm(request.POST or None, instance=obj)
     if request.method == 'POST':
         if form.is_valid():
             form.save()
-        headers = {'HX-Redirect': redirect_url} 
+        headers = {'HX-Redirect': redirect_url}
         return HttpResponse(headers=headers)
     context = {
         'labels': labels,
@@ -66,14 +68,3 @@ def object_chart(request, pk):
 def delete(request, pk):
     Data.objects.get(pk=pk).delete()
     return redirect('predictions')
-
-
-    
-
-
-
-
-
-
-
-

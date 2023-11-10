@@ -8,6 +8,8 @@ class DataForm(forms.ModelForm):
         exclude = ['user', 'chart_type',]
 
 
+
+
 class ChartChoiceForm(forms.ModelForm):
 
     class Meta:

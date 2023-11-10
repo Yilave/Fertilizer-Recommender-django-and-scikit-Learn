@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from .forms import DataForm, ChartChoiceForm
 from .models import Data
 from profiles.models import Profile
+from django.contrib import messages
 
 
 # Create your views here.
@@ -17,11 +18,12 @@ def home(request):
 @login_required
 def analysis(request):
     if request.method == 'POST':
+
         profile = Profile.objects.get(user=request.user) 
         form = DataForm(request.POST or None)
         if form.is_valid():
             instance = form.save(commit=False)
-            print(instance)
+            # print(instance)
             instance.user = profile
             instance.save()
             return redirect('predictions')
